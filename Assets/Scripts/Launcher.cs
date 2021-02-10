@@ -111,10 +111,4 @@ public class Launcher : MonoBehaviourPunCallbacks
     }
 
     #endregion
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

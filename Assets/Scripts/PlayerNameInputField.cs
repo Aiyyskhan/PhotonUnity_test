@@ -51,10 +51,4 @@ public class PlayerNameInputField : MonoBehaviour
     }
 
     #endregion
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
