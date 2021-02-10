@@ -34,6 +34,8 @@ public class Launcher : MonoBehaviourPunCallbacks
     /// </summary>
     string gameVersion = "0.1";
 
+    bool isConnecting;
+
     void Awake(){
         // 
         // 
@@ -63,7 +65,7 @@ public class Launcher : MonoBehaviourPunCallbacks
         }
         else
         {
-            PhotonNetwork.ConnectUsingSettings();
+            isConnecting = PhotonNetwork.ConnectUsingSettings();
             PhotonNetwork.GameVersion = gameVersion;
         }
     }
@@ -74,13 +76,20 @@ public class Launcher : MonoBehaviourPunCallbacks
 
     public override void OnConnectedToMaster(){
         Debug.Log("OnConnectedToMaster() was called by PUN.");
-        PhotonNetwork.JoinRandomRoom();
+
+        if (isConnecting)
+        {
+            PhotonNetwork.JoinRandomRoom();
+            isConnecting = false;
+        }
     }
 
     public override void OnDisconnected(DisconnectCause cause){
         
         progressLabel.SetActive(false);
         controlPanel.SetActive(true);
+
+        isConnecting = false;
         
         Debug.LogWarningFormat("OnDisconnected() was called by PUN with reason {0}", cause);
     }
@@ -92,6 +101,13 @@ public class Launcher : MonoBehaviourPunCallbacks
 
     public override void OnJoinedRoom(){
         Debug.Log("OnJoinedRoom() called by PUN. Now this client is in a room.");
+
+        if (PhotonNetwork.CurrentRoom.PlayerCount == 1)
+        {
+            Debug.Log("We load the 'Room for 1'");
+
+            PhotonNetwork.LoadLevel("Room for 1");
+        }
     }
 
     #endregion
