@@ -405,6 +405,22 @@ PrefabInstance:
       propertyPath: viewIdField
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -6211697808223325552, guid: bb98f74c188790582bc094e180e33b7b, type: 3}
+      propertyPath: followOnStart
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4230880873367702040, guid: bb98f74c188790582bc094e180e33b7b, type: 3}
+      propertyPath: m_SynchronizeParameters.Array.data[0].SynchronizeType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4230880873367702040, guid: bb98f74c188790582bc094e180e33b7b, type: 3}
+      propertyPath: m_SynchronizeParameters.Array.data[1].SynchronizeType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4230880873367702040, guid: bb98f74c188790582bc094e180e33b7b, type: 3}
+      propertyPath: m_SynchronizeParameters.Array.data[3].SynchronizeType
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5090126932384680821, guid: bb98f74c188790582bc094e180e33b7b, type: 3}
       propertyPath: m_RootOrder
       value: 2
