@@ -8,6 +8,12 @@ using Photon.Realtime;
 
 public class GameManager : MonoBehaviourPunCallbacks
 {
+    #region Public Fields
+        
+        public static GameManager Instance;
+
+    #endregion
+
     #region Photon Callbacks
 
     public override void OnLeftRoom(){
@@ -37,6 +43,10 @@ public class GameManager : MonoBehaviourPunCallbacks
     #endregion
 
     #region Private Methods
+
+    void Start(){
+        Instance = this;
+    }
 
     void LoadArena(){
         if (!PhotonNetwork.IsMasterClient)

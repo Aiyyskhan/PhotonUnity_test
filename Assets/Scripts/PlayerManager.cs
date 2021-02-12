@@ -5,6 +5,15 @@ using Photon.Pun;
 
 public class PlayerManager : MonoBehaviourPunCallbacks
 {
+
+    #region Public Fields
+        
+        [Tooltip("The current Health of our player")]
+        public float Health = 1f;
+
+    #endregion
+
+
     #region Private Field
         
         [Tooltip("The Beams GameObject to control")]
@@ -27,15 +36,62 @@ public class PlayerManager : MonoBehaviourPunCallbacks
             }
         }
 
+        void Start(){
+            CameraWork _cameraWork = this.gameObject.GetComponent<CameraWork>();
+
+            if (_cameraWork != null)
+            {
+                if (photonView.IsMine)
+                {
+                    _cameraWork.OnStartFollowing();
+                }
+            }
+            else
+            {
+                Debug.LogError("<Color=Red><a>Missing</a></Color> CameraWork Component on playerPrefab.", this);
+            }
+        }
+
         // Update is called once per frame
         void Update()
         {
-            ProcessInputs();
+            if (photonView.IsMine)
+            {
+                this.ProcessInputs();
+                if (Health <= 0f)
+                {
+                    GameManager.Instance.LeaveRoom();
+                }
+            }
 
             if (beams != null && IsFiring != beams.activeInHierarchy)
             {
                 beams.SetActive(IsFiring);
             }
+        }
+
+        void OnTriggerEnter(Collider other){
+            if (!photonView.IsMine)
+            {
+                return;
+            }
+            if (!other.name.Contains("Beam"))
+            {
+                return;
+            }
+            Health -= 0.1f;
+        }
+
+        void OnTriggerStay(Collider other){
+            if (!photonView.IsMine)
+            {
+                return;
+            }
+            if (!other.name.Contains("Beam"))
+            {
+                return;
+            }
+            Health -= 0.1f*Time.deltaTime;
         }
 
     #endregion
