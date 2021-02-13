@@ -26,15 +26,70 @@ public class CameraWork : MonoBehaviour
 
         Transform cameraTransform;
 
-    #endregion
-    void Start()
-    {
-        
-    }
+        bool isFollowing;
 
-    // Update is called once per frame
-    void Update()
-    {
+        Vector3 cameraOffset = Vector3.zero;
+
+    #endregion
+
+
+    #region MonoBehaviour Callbacks
         
-    }
+        void Start()
+        {
+            if (followOnStart)
+            {
+                OnStartFollowing();
+            }
+        }
+
+        void LateUpdate()
+        {
+            if (cameraTransform == null && isFollowing)
+            {
+                OnStartFollowing();
+            }
+
+            if (isFollowing)
+            {
+                Follow();
+            }
+        }
+    
+    #endregion
+
+    #region Public Methods
+        
+        public void OnStartFollowing()
+        {
+            cameraTransform = Camera.main.transform;
+            isFollowing = true;
+            Cut();
+        }
+
+    #endregion
+
+    #region Private Methods
+        
+        void Follow()
+        {
+            cameraOffset.z = -distance;
+            cameraOffset.y = height;
+
+            cameraTransform.position = Vector3.Lerp(cameraTransform.position, this.transform.position + this.transform.TransformVector(cameraOffset), smoothSpeed * Time.deltaTime);
+
+            cameraTransform.LookAt(this.transform.position + centerOffset);
+        }
+
+        void Cut()
+        {
+            cameraOffset.z = -distance;
+            cameraOffset.y = height;
+
+            cameraTransform.position = this.transform.position + this.transform.TransformVector(cameraOffset);
+
+            cameraTransform.LookAt(this.transform.position + centerOffset);
+        }
+
+    #endregion
 }

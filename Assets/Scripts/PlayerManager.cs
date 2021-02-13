@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using Photon.Pun;
 
-public class PlayerManager : MonoBehaviourPunCallbacks
+public class PlayerManager : MonoBehaviourPunCallbacks, IPunObservable
 {
 
     #region Public Fields
@@ -21,6 +21,20 @@ public class PlayerManager : MonoBehaviourPunCallbacks
         private GameObject beams;
         bool IsFiring;
 
+    #endregion
+
+    #region IPunObservable implementation
+        public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+        {
+            if (stream.IsWriting)
+            {
+                stream.SendNext(IsFiring);
+            }
+            else
+            {
+                this.IsFiring = (bool)stream.ReceiveNext();
+            }
+        }
     #endregion
 
     #region MonoBehaviour Callbacks
