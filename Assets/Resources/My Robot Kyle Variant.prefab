@@ -324,7 +324,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Health: 1
   PlayerUiPrefab: {fileID: 5928967835972697952, guid: 50f633a258dfe1c8abd84d87d882ad48, type: 3}
-  HeadBall: {fileID: 7872947957050166170}
   beams: {fileID: 931317687}
 --- !u!114 &6794278360288585260
 MonoBehaviour:
@@ -471,8 +470,3 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 541efaf412e018961a2df89d2aae561e, type: 3}
---- !u!1 &7872947957050166170 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4010252496074567551, guid: 541efaf412e018961a2df89d2aae561e, type: 3}
-  m_PrefabInstance: {fileID: 6549662199688275173}
-  m_PrefabAsset: {fileID: 0}
