@@ -1083,7 +1083,7 @@ PrefabInstance:
     - target: {fileID: 4216155276397942107, guid: 0ba3fe8c09b73c744bfd26bf837f1e62, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 6785794118561973874}
+      objectReference: {fileID: 0}
     - target: {fileID: 4216155276397942109, guid: 0ba3fe8c09b73c744bfd26bf837f1e62, type: 3}
       propertyPath: m_Name
       value: Leave Button
@@ -1148,20 +1148,3 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 8386590545107551046, guid: 33f52f17255138313ac82046c77dd231, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 33f52f17255138313ac82046c77dd231, type: 3}
---- !u!1 &6785794118561973873 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2232889420807835961, guid: 33f52f17255138313ac82046c77dd231, type: 3}
-  m_PrefabInstance: {fileID: 6785794118561973872}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &6785794118561973874
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6785794118561973873}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ae9ff1a7367024c3c979bc95714e2bf7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
